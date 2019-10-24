@@ -1,0 +1,9 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.page {
+  padding: 0 20px;
+}

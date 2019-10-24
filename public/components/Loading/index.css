@@ -1,0 +1,75 @@
+.root {
+  display: inline-flex;
+  position: relative;
+}
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 34px;
+  height: 34px;
+  box-sizing: border-box;
+  z-index: 1;
+  color: #2d3436;
+  border: 5px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  pointer-events: none;
+
+  backface-visibility: hidden;
+  animation: spin 1s linear infinite;
+  opacity: 0;
+
+  transition: 0.15s ease-in-out opacity;
+}
+
+.root[loading] > .spinner {
+  opacity: 1;
+}
+
+.spinner:before,
+.spinner:after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.spinner:before {
+  left: -1px;
+}
+
+.spinner:after {
+  right: -1px;
+}
+
+.content {
+  display: flex;
+  flex: 1;
+
+  opacity: 1;
+  transition: 0.15s ease-in-out opacity;
+}
+
+.root[loading] > .content {
+  pointer-events: none;
+}
+
+.root[fade-content][loading] > .content {
+  opacity: 0.2;
+}
+
+@keyframes spin {
+  from {
+    transform: translate(-50%, -50%) rotateZ(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotateZ(360deg);
+  }
+}

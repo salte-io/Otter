@@ -1,0 +1,71 @@
+.Button {
+  display: inline-flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  line-height: 1;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: 300;
+  user-select: none;
+  box-sizing: border-box;
+  color: inherit;
+  text-decoration: none;
+
+  transition: 0.15s ease-in-out;
+  transition-property: opacity;
+}
+
+.root[full-width] {
+  flex: 1;
+  width: 100%;
+}
+
+.root[variant="rounded"] .Button {
+  border-radius: 100vw;
+  min-height: 50px;
+  background: #3498db;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: white;
+}
+
+.Button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  border-radius: inherit;
+
+  opacity: 0;
+  transition: 0.15s ease-in-out opacity;
+}
+
+.root[variant="link"] .Button:before {
+  background-color: black;
+}
+
+.root[variant="rounded"] .Button:before {
+  background-color: white;
+}
+
+.Button:hover:before {
+  opacity: 0.1;
+}
+
+.Button:active:before {
+  opacity: 0.2;
+}
+
+.root[disabled] .Button {
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.root[scale="large"] {
+  font-size: 24px;
+}

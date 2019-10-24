@@ -1,0 +1,24 @@
+.root,
+.grid {
+  display: flex;
+}
+
+.grid {
+  flex: 1;
+}
+
+.root[direction="row"] > .grid {
+  flex-direction: row;
+}
+
+.root[direction="column"] > .grid {
+  flex-direction: column;
+}
+
+.root[direction="row"] > .grid > *:not(:last-child) {
+  margin-right: inherit;
+}
+
+.root[direction="column"] > .grid > *:not(:last-child) {
+  margin-bottom: inherit;
+}

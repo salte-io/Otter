@@ -1,0 +1,12 @@
+sudo: false
+language: node_js
+node_js: stable
+cache: npm
+branches:
+  only:
+    - master
+    - /^greenkeeper/.*$/
+script:
+  - npm run lint
+notifications:
+  email: change

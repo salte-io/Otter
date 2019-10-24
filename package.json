@@ -1,0 +1,38 @@
+{
+  "name": "otter",
+  "version": "1.0.0",
+  "description": "An Otterworldly Remote Desktop App!",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "lint": "eslint public/**/*.jsx",
+    "compile": "parcel build public/index.html"
+  },
+  "repository": "https://github.com/nick-woodward/Otter",
+  "author": "Salte",
+  "dependencies": {
+    "electron-is-dev": "^1.1.0",
+    "menubar": "^7.0.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-icons": "^3.8.0",
+    "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-decorators": "^7.6.0",
+    "babel-eslint": "^10.0.3",
+    "electron": "^7.0.0",
+    "eslint": "^6.5.1",
+    "eslint-plugin-compat": "^3.3.0",
+    "eslint-plugin-react": "^7.16.0",
+    "parcel-bundler": "^1.12.4",
+    "postcss-modules": "^1.4.1"
+  },
+  "browserslist": [
+    "last 1 Electron versions"
+  ]
+}
