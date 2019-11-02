@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="329" height="70" viewBox="0 0 329 70">
+  <g fill="none" fill-rule="evenodd">
+    <text fill="#795548" font-family="Roboto-Bold, Roboto" font-size="40" font-weight="bold">
+      <tspan x="119.07" y="29">Otter</tspan>
+    </text>
+    <text fill="#795548" font-family="Roboto-LightItalic, Roboto" font-size="20" font-style="italic" font-weight="300">
+      <tspan x="3.274" y="64">An Otterworldly Remote Desktop App!</tspan>
+    </text>
+  </g>
+</svg>
