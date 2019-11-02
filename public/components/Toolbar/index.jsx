@@ -9,6 +9,8 @@ import { Button } from '../Button';
 
 import { config } from '../../config';
 
+import { Electron } from '../../services/Electron';
+
 import styles from './index.css';
 
 export function Toolbar() {
@@ -25,9 +27,7 @@ export function Toolbar() {
         }} />
         {config.isElectron && (
           <Button onClick={() => {
-            const { remote } = require('electron');
-
-            remote.getCurrentWindow().close();
+            Electron.close();
           }}>
             Quit
           </Button>

@@ -3,20 +3,24 @@ const { menubar } = require('menubar');
 const path = require('path');
 const isDev = require('electron-is-dev');
 
+process.env.ELECTRON = true;
+
 (async () => {
   if (isDev) {
     const Bundler = require('parcel-bundler');
 
     const bundler = new Bundler('./public/index.html', {
+      cacheDir: '.cache/electron',
+      outDir: 'dist/electron',
       target: 'electron',
-      watch: true,
+      watch: true
     });
 
     await new Promise((resolve, reject) => {
       bundler.on('bundled', () => resolve());
       bundler.on('buildError', () => reject());
 
-      bundler.serve();
+      bundler.serve(config.port);
     });
   }
 
@@ -31,7 +35,7 @@ const isDev = require('electron-is-dev');
       width: config.width,
     },
     index: isDev
-      ? 'http://localhost:1234'
+      ? `http://localhost:${config.port}`
       : `file://${path.join(__dirname, 'dist/index.html')}`,
     preloadWindow: true,
   });
