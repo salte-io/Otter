@@ -5,10 +5,10 @@
 <h2 align="center">
   <div>
     <a href="https://github.com/salte-io/Otter">
-      <img height="190px" src="https://raw.githubusercontent.com/salte-io/Otter/master/Media/logo.svg?sanitize=true">
+      <img height="190px" src="./Media/logo.svg?sanitize=true">
       <br>
       <br>
-      <img height="70px" src="https://raw.githubusercontent.com/salte-io/Otter/master/Media/otter.svg?sanitize=true">
+      <img height="70px" src="./Media/otter.svg?sanitize=true">
     </a>
   </div>
 </h2>

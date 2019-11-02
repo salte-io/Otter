@@ -34,6 +34,7 @@ process.env.ELECTRON = true;
       },
       width: config.width,
     },
+    icon: path.join(__dirname, 'Media/logo-basic.png'),
     index: isDev
       ? `http://localhost:${config.port}`
       : `file://${path.join(__dirname, 'dist/index.html')}`,
