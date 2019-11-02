@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "electron .",
+    "serve": "parcel public/index.html",
     "lint": "eslint public/**/*.jsx",
     "compile": "parcel build public/index.html"
   },

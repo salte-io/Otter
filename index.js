@@ -1,3 +1,4 @@
+const { config } = require('./public/config');
 const { menubar } = require('menubar');
 const path = require('path');
 const isDev = require('electron-is-dev');
@@ -22,12 +23,12 @@ const isDev = require('electron-is-dev');
   const mb = menubar({
     browserWindow: {
       alwaysOnTop: isDev,
-      height: 230,
+      height: config.height,
       transparent: true,
       webPreferences: {
         nodeIntegration: true
       },
-      width: 560,
+      width: config.width,
     },
     index: isDev
       ? 'http://localhost:1234'

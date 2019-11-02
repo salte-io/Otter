@@ -9,6 +9,8 @@ import { HomePage } from '../HomePage';
 import { SharePage } from '../SharePage';
 import { JoinPage } from '../JoinPage';
 
+import { config } from '../../config';
+
 import styles from './index.css';
 
 export function App() {
@@ -21,9 +23,11 @@ export function App() {
             <Route exact path="/">
               <HomePage />
             </Route>
-            <Route exact path="/share">
-              <SharePage />
-            </Route>
+            {config.isElectron && (
+              <Route exact path="/share">
+                <SharePage />
+              </Route>
+            )}
             <Route exact path="/join">
               <JoinPage />
             </Route>
