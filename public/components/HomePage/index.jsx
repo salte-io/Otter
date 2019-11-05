@@ -13,9 +13,9 @@ export function HomePage() {
       <Typography>If you share your screen the remote user will have full access to your desktop, mouse, and keyboard.</Typography>
       <Grid direction="row">
         {config.isElectron && (
-          <Button fullWidth component={Link} variant="rounded" to="/share">Share Your Screen</Button>
+          <Button fullWidth component={Link} variant="rounded" color="primary" to="/share">Share Your Screen</Button>
         )}
-        <Button fullWidth component={Link} variant="rounded" to="/join">View Remote Screen</Button>
+        <Button fullWidth component={Link} variant="rounded" color="primary" to="/join">View Remote Screen</Button>
       </Grid>
     </Grid>
   );

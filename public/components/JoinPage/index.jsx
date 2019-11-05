@@ -18,7 +18,7 @@ export function JoinPage() {
         <Grid flex={2}>
           <Input fullWidth label="IP Address" placeholder="127.0.0.1" value={value} onChange={(value) => setValue(value)} />
         </Grid>
-        <Button fullWidth variant="rounded" loading={loading} onClick={() => {
+        <Button fullWidth variant="rounded" color="primary" loading={loading} onClick={() => {
           setLoading(true);
           ScreenShare.view(value || '127.0.0.1').finally(() => {
             setLoading(false);

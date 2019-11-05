@@ -1,3 +1,4 @@
+const server = require('./src');
 const { config } = require('./public/config');
 const { menubar } = require('menubar');
 const path = require('path');
@@ -41,7 +42,10 @@ process.env.ELECTRON = true;
     preloadWindow: true,
   });
 
-  mb.on('after-create-window', () => mb.showWindow());
+  mb.on('after-create-window', () => {
+    server(mb.window);
+    mb.showWindow();
+  });
 
   if (isDev) {
     mb.on('after-hide', () => mb.showWindow());

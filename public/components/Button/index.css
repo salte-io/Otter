@@ -1,4 +1,4 @@
-.Button {
+.button {
   display: inline-flex;
   flex: 1;
   align-items: center;
@@ -23,15 +23,36 @@
   width: 100%;
 }
 
-.root[variant="rounded"] .Button {
+.root[variant~="rounded"] .button {
   border-radius: 100vw;
   min-height: 50px;
-  background: #3498db;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  color: white;
 }
 
-.Button:before {
+.root[variant~="slim"] .button {
+  min-height: 40px;
+}
+
+.root[variant~="link"] .button.default {
+  color: black;
+}
+
+.root[variant~="rounded"] .button.default {
+  color: black;
+  background: white;
+}
+
+.root[variant~="rounded"] .button.primary {
+  color: white;
+  background: #3498db;
+}
+
+.root[variant~="rounded"] .button.danger {
+  color: white;
+  background: black;
+}
+
+.button:before {
   content: '';
   position: absolute;
   top: 0;
@@ -45,23 +66,19 @@
   transition: 0.15s ease-in-out opacity;
 }
 
-.root[variant="link"] .Button:before {
-  background-color: black;
+.button:before {
+  background-color: currentColor;
 }
 
-.root[variant="rounded"] .Button:before {
-  background-color: white;
-}
-
-.Button:hover:before {
+.button:hover:before {
   opacity: 0.1;
 }
 
-.Button:active:before {
+.button:active:before {
   opacity: 0.2;
 }
 
-.root[disabled] .Button {
+.root[disabled] .button {
   opacity: 0.25;
   pointer-events: none;
 }
