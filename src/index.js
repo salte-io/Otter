@@ -7,13 +7,12 @@ module.exports = function(window) {
   const io = require('socket.io')(app);
 
   io.on('connection', (socket) => {
-    socket.on('share', () => {
-      window.webContents.send('share-requested');
+    socket.on('share', (offer) => {
+      window.webContents.send('share-requested', offer);
 
-      ipcMain.once('share-requested-reply', (event, type) => {
-        console.log(type);
+      ipcMain.once('share-requested-reply', (event, { type, signal }) => {
         if (type === 'approved') {
-          socket.emit('share-approved');
+          socket.emit('share-approved', signal);
         } else if (type === 'declined') {
           socket.emit('share-declined');
         }
@@ -23,10 +22,9 @@ module.exports = function(window) {
     socket.on('view', () => {
       window.webContents.send('view-requested');
 
-      ipcMain.once('view-requested-reply', (event, type) => {
-        console.log(type);
+      ipcMain.once('view-requested-reply', (event, { type, sdp }) => {
         if (type === 'approved') {
-          socket.emit('view-approved');
+          socket.emit('view-approved', sdp);
         } else if (type === 'declined') {
           socket.emit('view-declined');
         }
