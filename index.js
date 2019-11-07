@@ -5,12 +5,15 @@ const path = require('path');
 const isDev = require('electron-is-dev');
 
 process.env.ELECTRON = true;
+process.env.BASE_URL = isDev ?
+  `http://localhost:${config.port}` :
+  `file://${path.join(__dirname, 'dist/index.html')}`;
 
 (async () => {
   if (isDev) {
     const Bundler = require('parcel-bundler');
 
-    const bundler = new Bundler('./public/index.html', {
+    const bundler = new Bundler(path.join(__dirname, 'public/index.html'), {
       cacheDir: '.cache/electron',
       outDir: 'dist/electron',
       target: 'electron',
@@ -36,9 +39,7 @@ process.env.ELECTRON = true;
       width: config.width,
     },
     icon: path.join(__dirname, 'Media/logo-basic.png'),
-    index: isDev
-      ? `http://localhost:${config.port}`
-      : `file://${path.join(__dirname, 'dist/index.html')}`,
+    index: process.env.BASE_URL,
     preloadWindow: true,
   });
 

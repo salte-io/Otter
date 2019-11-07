@@ -11,10 +11,12 @@ import { Grid } from '../Grid';
 import { HomePage } from '../HomePage';
 import { SharePage } from '../SharePage';
 import { JoinPage } from '../JoinPage';
+import { ViewerPage } from '../ViewerPage';
 
 import { config } from '../../config';
 
 import styles from './index.css';
+import { ScreenShare } from '../../services/ScreenShare';
 
 const Router = config.isElectron ? HashRouter : BrowserRouter;
 
@@ -24,31 +26,31 @@ export function App() {
       actions: [{
         label: 'Accept',
         onClick: () => {
-          ipcRenderer.send('view-requested-reply', 'approved');
+          ScreenShare.approveView();
         }
       }, {
         color: 'danger',
         label: 'Decline',
         onClick: () => {
-          ipcRenderer.send('view-requested-reply', 'declined');
+          ScreenShare.decline('view');
         }
       }],
       message: 'Someone has requested to view your screen.',
     });
   });
 
-  ipcRenderer.on('share-requested', () => {
+  ipcRenderer.on('share-requested', (event, offer) => {
     toast({
       actions: [{
         label: 'Accept',
         onClick: () => {
-          ipcRenderer.send('share-requested-reply', 'approved');
+          ScreenShare.approveShare(offer);
         }
       }, {
         color: 'danger',
         label: 'Decline',
         onClick: () => {
-          ipcRenderer.send('share-requested-reply', 'declined');
+          ScreenShare.decline('share');
         }
       }],
       message: 'Someone has requested to share their screen with you.',
@@ -58,24 +60,23 @@ export function App() {
   return (
     <Router>
       <Toast />
-      <Loading fadeContent className={styles.root} contentClassName={styles.root}>
-        <Toolbar />
-        <Grid flex={1} className={styles.page}>
-          <Switch>
-            <Route exact path="/">
-              <HomePage />
-            </Route>
-            {config.isElectron && (
-              <Route exact path="/share">
-                <SharePage />
-              </Route>
-            )}
-            <Route exact path="/join">
-              <JoinPage />
-            </Route>
-          </Switch>
-        </Grid>
-      </Loading>
+      <Switch>
+        <Route exact path="/viewer" component={ViewerPage} />
+        <Route>
+          <Loading fadeContent className={styles.root} contentClassName={styles.root}>
+            <Toolbar />
+            <Grid flex={1} className={styles.page}>
+              <Switch>
+                <Route exact path="/" component={HomePage} />
+                {config.isElectron && (
+                  <Route exact path="/share" component={SharePage} />
+                )}
+                <Route exact path="/join" component={JoinPage} />
+              </Switch>
+            </Grid>
+          </Loading>
+        </Route>
+      </Switch>
     </Router>
   );
 }

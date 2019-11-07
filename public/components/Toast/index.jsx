@@ -37,7 +37,6 @@ export class Toast extends React.Component {
               const toasts = [...this.state.toasts];
               toasts.splice(toastIndex, 1);
               this.setState({ toasts });
-              console.log(toast._action);
               if (toast._action.onClick) toast._action.onClick();
             }
           }}>
